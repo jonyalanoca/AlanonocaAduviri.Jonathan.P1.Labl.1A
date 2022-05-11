@@ -1,0 +1,46 @@
+/*
+ * avion.c
+ *
+ *  Created on: 11 may. 2022
+ *      Author: Jony
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include "avion.h"
+
+int inicializarArray(eAvion aviones[], int tamAvion){
+	int todoOk=-1;
+	if(aviones!=NULL && tamAvion>0){
+		for(int i=0;i<tamAvion;i++){
+			aviones[i].isEmpty=1;
+		}
+		todoOk=0;
+	}
+	return todoOk;
+}
+
+int buscarIndexLibre(eAvion aviones[], int tamAvion){
+	int todoOk=-1;
+	if(aviones!=NULL && tamAvion>0){
+		for(int i=0;i<tamAvion;i++){
+			if(aviones[i].isEmpty==1){
+				todoOk=i;
+				break;
+			}
+		}
+	}
+	return todoOk;
+}
+
+int existeRegistro(eAvion aviones[], int tamAvion){/// 0: si hay algun registro, -1 esta vacio
+	int todoOk=-1;
+	if(aviones!=NULL && tamAvion>0){
+		for(int i=0;i<tamAvion;i++){
+			if(aviones[i].isEmpty==0){
+				todoOk=0;
+				break;
+			}
+		}
+	}
+	return todoOk;
+}

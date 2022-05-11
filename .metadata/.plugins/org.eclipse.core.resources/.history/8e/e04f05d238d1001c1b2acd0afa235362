@@ -1,0 +1,24 @@
+
+#ifndef AVION_H_
+#define AVION_H_
+
+
+
+typedef struct{
+	int id;
+	int idAeroLinea;
+	int idTipo;
+	int capacidad;
+	int isEmpty;
+}eAvion;
+#endif /* AVION_H_ */
+
+int inicializarArray(eAvion aviones[], int tamAvion);
+int buscarIndexLibre(eAvion aviones[], int tamAvion);
+int existeRegistro(eAvion aviones[], int tamAvion);
+void listarAvion(eAvion aviones,eAerolinea aerolineas[], eTipo  tipos[], int tamA, int tamTD);
+int listarAviones(eAvion aviones[],eAerolinea aerolienas[], eTipo  tipos[], int tamAviones, int tamA, int tamTD);
+int modificarAvion(eAvion aviones[],eAerolinea aerolineas[],eTipo tipos[], int tamAvion, int tamA, int tamTD);
+int bajaAvion(eAvion aviones[],eAerolinea aerolineas[],eTipo tipos[], int tamAvion, int tamA, int tamTD);
+int altaAvion(eAvion aviones[], eAerolinea aerolineas[], eTipo tipos[],int  tamAviones, int tamTD, int tamA, int* idAviones);
+int validarDatos(eAerolinea aerolineas[], eTipo tipos[], int tamTD,int tamA, int* idAerolinea, int* idTipo, int* capacidad );

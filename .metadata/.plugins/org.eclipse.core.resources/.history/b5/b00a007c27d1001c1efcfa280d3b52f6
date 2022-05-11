@@ -1,0 +1,238 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "validaciones.h"
+#include "otros.h"
+#include "menus.h"
+#define TAM_HCODE_A 5
+#define TAM_HCODE_TD 4
+#define TAM_AVION 1000
+typedef struct{
+	int dia;
+	int mes;
+	int anio;
+}eFecha;
+typedef struct{
+	int id;
+	char descripcion[20];
+}eAerolinea;
+typedef struct{
+	int id;
+	char descripcion[20];
+}eTipo;
+typedef struct{
+	int id;
+	int idAeroLinea;
+	int idTipo;
+	int capacidad;
+	int isEmpty;
+}eAvion;
+typedef struct{
+	 int id;
+	 char descripcion[25];
+	 float precio;
+
+}eDestino;
+typedef struct{
+	int id;
+	int idAvion;
+	int idDestino;
+	eFecha fecha;
+}eVuelo;
+
+
+int inicializarArray(eAvion aviones[], int tamAvion);
+int buscarIndexLibre(eAvion aviones[], int tamAvion);
+int existeRegistro(eAvion aviones[], int tamAvion);
+
+void listarAerolinea(eAerolinea aerolinea);
+int listarAerolineas(eAerolinea aerolineas[], int tamHCodeA);
+void listarTipo(eTipo tipos);
+int listarTipos(eTipo tipos[], int tamHCodeTD);
+void listarDestino(eDestino destinos);
+int listarDestinos(eDestino destinos[], int tamHCodeTD);
+
+
+int main(void) {
+	setbuf(stdout,NULL);
+	eAerolinea aerolineas[TAM_HCODE_A]={
+			{1000,"Lan"},
+			{1001,"Iberia"},
+			{1002,"Norwegian"},
+			{1003,"American,"},
+			{1004,"Austral"}
+	};
+	eTipo tipos[TAM_HCODE_TD]={
+			{5000,"Jet"},
+			{5001,"Helice"},
+			{5002,"Planeador"},
+			{5003,"Carga"},
+	};
+	eDestino destinos[TAM_HCODE_TD]={
+			{20000,"Calafate",100000},
+			{20001,"Miami",100000},
+			{20002,"Madrid",100000},
+			{20003,"Amsterdam",100000},
+	};
+
+	eAvion aviones[TAM_AVION];
+	int idIncrem=4000;
+	char salir='n';
+
+	inicializarArray(aviones, TAM_AVION);
+	do{
+			switch(menu()){
+			case 1:
+				/*
+				if(==-1){
+					printf("Error al validar punteros o tam menor a cero.\n");
+				}else{
+					printf("Se cargaron los datos con exito.\n");
+				}
+				*/
+				break;
+			case 2:
+				/*
+				if(existeRegistro(autos, TAM_AUTO)==0){
+
+				}else{
+					printf("Primero debe resitrar un auto.\n");
+				}
+
+				*/
+				break;
+			case 3:
+
+				break;
+			case 4:
+
+				break;
+			case 5:
+				if(listarAerolineas(aerolineas, TAM_HCODE_A)==-1){
+					printf("HUbo un error al validar punteros.\n");
+				}
+				break;
+			case 6:
+				if(listarTipos(tipos, TAM_HCODE_TD)==-1){
+					printf("HUbo un error al validar punteros.\n");
+				}
+				break;
+			case 7:
+				if(listarDestinos(destinos, TAM_HCODE_TD)==-1){
+					printf("HUbo un error al validar punteros.\n");
+				}
+				break;
+			case 8:
+
+				break;
+			case 9:
+
+				break;
+			case 10:
+				if(!cerrar(&salir)){
+					printf("Hubo un problema con la validacion.\n");
+				}
+				break;
+			}
+			system("pause");
+			system("cls");
+		}while(salir!='s');
+	return EXIT_SUCCESS;
+
+}
+
+int inicializarArray(eAvion aviones[], int tamAvion){
+	int todoOk=-1;
+	if(aviones!=NULL && tamAvion>0){
+		for(int i=0;i<tamAvion;i++){
+			aviones[i].isEmpty=1;
+		}
+		todoOk=0;
+	}
+	return todoOk;
+}
+
+int buscarIndexLibre(eAvion aviones[], int tamAvion){
+	int todoOk=-1;
+	if(aviones!=NULL && tamAvion>0){
+		for(int i=0;i<tamAvion;i++){
+			if(aviones[i].isEmpty==1){
+				todoOk=i;
+				break;
+			}
+		}
+	}
+	return todoOk;
+}
+
+int existeRegistro(eAvion aviones[], int tamAvion){/// 0: si hay algun registro, -1 esta vacio
+	int todoOk=-1;
+	if(aviones!=NULL && tamAvion>0){
+		for(int i=0;i<tamAvion;i++){
+			if(aviones[i].isEmpty==0){
+				todoOk=0;
+				break;
+			}
+		}
+	}
+	return todoOk;
+}
+
+
+/* ------------------------LISTADOS----------------------------------*/
+void listarAerolinea(eAerolinea aerolinea){
+	printf("%4d %15s\n",aerolinea.id, aerolinea.descripcion);
+}
+int listarAerolineas(eAerolinea aerolineas[], int tamHCodeA){
+	int todoOk=-1;
+	if(aerolineas!=NULL && tamHCodeA>0){
+		system("cls");
+		printf(".......................\n");
+		printf("  ID      DESCRIPCION\n");
+		printf(".......................\n");
+		for(int i=0; i<tamHCodeA;i++){
+			listarAerolinea(aerolineas[i]);
+		}
+		printf(".......................\n");
+		todoOk=0;
+	}
+	return todoOk;
+}
+
+void listarTipo(eTipo tipos){
+	printf("%4d %15s\n",tipos.id, tipos.descripcion);
+}
+int listarTipos(eTipo tipos[], int tamHCodeTD){
+	int todoOk=-1;
+	if(tipos!=NULL && tamHCodeTD>0){
+		system("cls");
+		printf(".......................\n");
+		printf("  ID      DESCRIPCION\n");
+		printf(".......................\n");
+		for(int i=0; i<tamHCodeTD;i++){
+			listarTipo(tipos[i]);
+		}
+		printf(".......................\n");
+		todoOk=0;
+	}
+	return todoOk;
+}
+void listarDestino(eDestino destinos){
+	printf("%4d %15s %10.2f\n",destinos.id,destinos.descripcion, destinos.precio);
+}
+int listarDestinos(eDestino destinos[], int tamHCodeTD){
+	int todoOk=-1;
+	if(destinos!=NULL && tamHCodeTD>0){
+		system("cls");
+		printf(".......................\n");
+		printf("  ID      DESCRIPCION     PRECIO\n");
+		printf(".......................\n");
+		for(int i=0; i<tamHCodeTD;i++){
+			listarDestino(destinos[i]);
+		}
+		printf(".......................\n");
+		todoOk=0;
+	}
+	return todoOk;
+}
+
+/* ------------------------LISTADOS----------------------------------*/

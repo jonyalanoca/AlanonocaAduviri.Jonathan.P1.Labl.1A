@@ -1,0 +1,66 @@
+/*
+ * avion.c
+ *
+ *  Created on: 11 may. 2022
+ *      Author: Jony
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include "avion.h"
+
+int inicializarArray(eAvion aviones[], int tamAvion){
+	int todoOk=-1;
+	if(aviones!=NULL && tamAvion>0){
+		for(int i=0;i<tamAvion;i++){
+			aviones[i].isEmpty=1;
+		}
+		todoOk=0;
+	}
+	return todoOk;
+}
+
+int buscarIndexLibre(eAvion aviones[], int tamAvion){
+	int todoOk=-1;
+	if(aviones!=NULL && tamAvion>0){
+		for(int i=0;i<tamAvion;i++){
+			if(aviones[i].isEmpty==1){
+				todoOk=i;
+				break;
+			}
+		}
+	}
+	return todoOk;
+}
+
+int existeRegistro(eAvion aviones[], int tamAvion){/// 0: si hay algun registro, -1 esta vacio
+	int todoOk=-1;
+	if(aviones!=NULL && tamAvion>0){
+		for(int i=0;i<tamAvion;i++){
+			if(aviones[i].isEmpty==0){
+				todoOk=0;
+				break;
+			}
+		}
+	}
+	return todoOk;
+}
+void listarAvion(eAvion aviones,eAerolinea aerolineas[], eTipo  tipos[], int tamA, int tamTD){
+	printf("%4d %15s %15s %10d\n",aviones.id, aerolineas[buscarIndexPorIdAerolinea(aerolineas,tamA, aviones.idAeroLinea)].descripcion, tipos[buscarIndexPorIdTipo(tipos, tamTD, aviones.idTipo)].descripcion,aviones.capacidad);
+}
+int listarAviones(eAvion aviones[],eAerolinea aerolineas[], eTipo  tipos[], int tamAviones, int tamA, int tamTD){
+	int todoOk=-1;
+	if(aviones!=NULL && tamAviones>0){
+		system("cls");
+		printf(".......................\n");
+		printf("  ID      AEROLINEA     TIPO  CAPACIDAD\n");
+		printf(".......................\n");
+		for(int i=0; i<tamAviones;i++){
+			if(aviones[i].isEmpty==0){
+				listarAvion(aviones[i], aerolineas, tipos, tamA, tamTD);
+			}
+		}
+		printf(".......................\n");
+		todoOk=0;
+	}
+	return todoOk;
+}
