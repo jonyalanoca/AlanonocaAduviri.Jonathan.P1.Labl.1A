@@ -1,0 +1,51 @@
+#include "destino.h"
+#include "avion.h"
+#include "aerolinea.h"
+#include "tipo.h"
+#ifndef VUELO_H_
+#define VUELO_H_
+
+typedef struct{
+	int dia;
+	int mes;
+	int anio;
+}eFecha;
+
+typedef struct{
+	int id;
+	int idAvion;
+	int idDestino;
+	eFecha fecha;
+}eVuelo;
+
+#endif /* VUELO_H_ */
+/// @brief  muestra en forma encoumanda los valores de una estructura eVuelo
+///
+/// @param vuelos
+/// @param destinos
+/// @param tamTD
+void listarVuelo(eVuelo vuelos, eDestino destinos[],int tamTD);
+/// @brief muestra en forma encoumnada los valores de un array de estructura eVuelo
+///
+/// @param vuelos
+/// @param destinos
+/// @param tamVuelo
+/// @param tamTD
+/// @param lenVuelos
+/// @return retorna -1: error con punteros o tam menor a 0. retorna 0: si todo salio bien.
+int listarVuelos(eVuelo vuelos[], eDestino destinos[],int tamVuelo,int tamTD,int lenVuelos );
+/// @brief pide datos, valida y carga de forma segura en un array estructura eVuelo
+///
+/// @param vuelos
+/// @param aviones
+/// @param destinos
+/// @param aerolineas
+/// @param tipos
+/// @param tamVuelos
+/// @param tamAviones
+/// @param tamTD
+/// @param tamA
+/// @param idVuelo
+/// @param indexVuelo
+/// @return  retorna -1: error con punteros o tam menor a 0. retorna 0: si todo salio bien.
+int altaVuelo(eVuelo vuelos[], eAvion aviones[], eDestino destinos[],eAerolinea aerolineas[], eTipo tipos[],  int tamVuelos,int tamAviones, int tamTD, int tamA, int* idVuelo, int* indexVuelo);

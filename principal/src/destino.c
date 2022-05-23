@@ -15,13 +15,13 @@ int listarDestinos(eDestino destinos[], int tamHCodeTD){
 	int todoOk=-1;
 	if(destinos!=NULL && tamHCodeTD>0){
 		system("cls");
-		printf(".......................\n");
+		printf("................................\n");
 		printf("  ID      DESCRIPCION     PRECIO\n");
-		printf(".......................\n");
+		printf("................................\n");
 		for(int i=0; i<tamHCodeTD;i++){
 			listarDestino(destinos[i]);
 		}
-		printf(".......................\n");
+		printf("................................\n");
 		todoOk=0;
 	}
 	return todoOk;

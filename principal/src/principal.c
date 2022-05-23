@@ -23,7 +23,7 @@ int main(void) {
 			{1000,"Lan"},
 			{1001,"Iberia"},
 			{1002,"Norwegian"},
-			{1003,"American,"},
+			{1003,"American"},
 			{1004,"Austral"}
 	};
 	eTipo tipos[TAM_HCODE_TD]={
@@ -80,11 +80,13 @@ int main(void) {
 				}
 				break;
 			case 4:
+				ordenarPorAEyCapacidad(aviones, aerolineas,TAM_HCODE_A,TAM_AVION);
 				if(listarAviones(aviones, aerolineas, tipos,TAM_AVION, TAM_HCODE_A, TAM_HCODE_TD)==-1){
 					printf("HUbo un error al validar punteros.\n");
 				}
 				break;
 			case 5:
+
 				if(listarAerolineas(aerolineas, TAM_HCODE_A)==-1){
 					printf("HUbo un error al validar punteros.\n");
 				}
@@ -114,6 +116,40 @@ int main(void) {
 				}
 				break;
 			case 10:
+				hardCodearAviones(aviones,TAM_AVION, &idIncrem);
+				hardCodearVuelos(vuelos,aviones,TAM_AVION, TAM_VUELO,&indexVuelo, &idInVuelo);
+				break;
+			case 11:
+				listarAvionesPorAerolineaSeleccionado(aviones, aerolineas, tipos,TAM_AVION, TAM_HCODE_A, TAM_HCODE_TD);
+				break;
+			case 12:
+				listarAvionesPorTipoSeleccionado(aviones, aerolineas, tipos,TAM_AVION, TAM_HCODE_A, TAM_HCODE_TD);
+				break;
+			case 13:
+				ListarSeparadoPorAerolinea(aviones, aerolineas, tipos,TAM_AVION, TAM_HCODE_A, TAM_HCODE_TD);
+				break;
+			case 14:
+				MostrarAeroLineaMayorCarga(aviones, aerolineas, tipos,TAM_AVION, TAM_HCODE_A, TAM_HCODE_TD);
+				  break;
+			case 15:
+				listarAerolineaConMenorAviones(aviones, aerolineas, tipos,TAM_AVION, TAM_HCODE_A, TAM_HCODE_TD);
+				break;
+			case 16:
+				listarVuelosConAvionSeleccionado(vuelos, destinos, aviones, aerolineas, tipos,TAM_VUELO, TAM_HCODE_TD, TAM_AVION,TAM_HCODE_A, indexVuelo);
+
+				break;
+			case 17:
+				listarPrecioTotalViajeUnAvion(vuelos, destinos, aviones, aerolineas, tipos,TAM_VUELO, TAM_HCODE_TD, TAM_AVION,TAM_HCODE_A);
+				break;
+			case 18:
+				listarViajesSeleccionandoUnDestino(vuelos, destinos, aviones, aerolineas, tipos,TAM_VUELO, TAM_HCODE_TD, TAM_AVION,TAM_HCODE_A, indexVuelo);
+
+				 break;
+			case 19:
+				listarViajesSeleccionandoUnaFecha(vuelos, destinos, aviones, aerolineas, tipos,TAM_VUELO, TAM_HCODE_TD, TAM_AVION,TAM_HCODE_A);
+
+				  break;
+			case 20:
 				if(!cerrar(&salir)){
 					printf("Hubo un problema con la validacion.\n");
 				}
@@ -123,32 +159,4 @@ int main(void) {
 			system("cls");
 		}while(salir!='s');
 	return EXIT_SUCCESS;
-
 }
-
-
-
-
-/* ------------------------LISTADOS----------------------------------*/
-
-
-
-
-
-
-
-
-/* ------------------------Alta----------------------------------*/
-
-
-/* ------------------------buscadores----------------------------------*/
-
-
-
-
-
-
-/* ------------------------MODIFICAR  y BAJA----------------------------------*/
-
-/* ------------------------VUELO----------------------------------*/
-

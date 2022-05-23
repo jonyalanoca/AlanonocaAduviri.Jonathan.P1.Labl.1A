@@ -1,7 +1,8 @@
-11:49:28 **** Incremental Build of configuration Debug for project principal ****
+10:59:53 **** Incremental Build of configuration Debug for project principal ****
 Info: Internal Builder is used for build
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\vuelo.o" "..\\src\\vuelo.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\principal.o" "..\\src\\principal.c" 
 gcc -o principal.exe "src\\aerolinea.o" "src\\avion.o" "src\\destino.o" "src\\menus.o" "src\\otros.o" "src\\principal.o" "src\\tipo.o" "src\\validaciones.o" "src\\vuelo.o" 
 
-11:49:30 Build Finished. 0 errors, 0 warnings. (took 1s.274ms)
+10:59:55 Build Finished. 0 errors, 0 warnings. (took 1s.392ms)
 

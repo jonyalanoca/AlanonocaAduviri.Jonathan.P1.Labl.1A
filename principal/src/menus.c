@@ -21,12 +21,23 @@ int menu(void){
 	printf("  [6]  LISTAR TIPOS.\n");
 	printf("  [7]  LISTAR DESTINOS.\n");
 	printf("  [8]  ALTA VUELO.\n");
-	printf("  [9]  LISTAR VUELOS.\n");
+	printf("  [9]  LISTAR AVIONES.\n");
+	printf("  [10]  [BONUS] HARDCODEAR AVIONES Y VUELOS!!!.\n");
+	printf("  [11]  LISTAR AVIONES DE AEROLINEA SELECCIONADO.\n");
+	printf("  [12]  LISTAR AVIONES DE TIPO SELECCIONADO.\n");
+	printf("  [13]  LISTAR AVIONES SEPARADOS POR AEROLINEAS.\n");
+	printf("  [14]  INFORMAR LA AEROLINEA QUE PUEDE TRANSPORTAR MAS PASAJEROS.\n");
+	printf("  [15]  MOSTRAR LA AEROLINEA CON MENOR CANTIDAD DE AVIONES.\n");
+	printf("  [16]  LISTAR VUELOS CON AVION SELECCIONADO.\n");
+	printf("  [17]  Pedir un avion e informar la suma de los precios (costo) de todos los vuelos que realizo..\n");
+	printf("  [18]  Pedir un destino y mostrar los aviones que volaron a ese destino y en qué fecha..\n");
+	printf("  [19]  Pedir una fecha y mostrar todos los vuelos realizados en la misma..\n");
 
-	printf("  [10]  Salir.\n");
+
+	printf("  [20]  Salir.\n");
 	printf("________________________________________\n\n");
 
-	if(!enteroEnRango("Ingrese una opciones del menu",&opcion,1,10)){
+	if(!enteroEnRango("Ingrese una opciones del menu",&opcion,1,20)){
 		printf("Algo ha salido mal.\n");
 	}
 	return opcion;

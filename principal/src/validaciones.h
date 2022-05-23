@@ -95,4 +95,11 @@ int capitalizar(char varString[]);
 /// @param numero2
 /// @return retorna 0 para puntero nulo, 1 si todo salio bien.
 int enteroEnRango(char mensaje[], int* pNumero,int numero1, int numero2);
+/// @brief pide valida las una fecha. los carga en los punteros que corresponda a dia mes y anio.
+///
+/// @param dia
+/// @param mes
+/// @param anio
+/// @return retorna -1: error con punteros o tam menor a 0. retorna 0: si todo salio bien.
+///
 int cargarValidarFecha(int* dia,int* mes,int* anio);
